@@ -12,17 +12,21 @@ const Home = () => {
   const [updating, setUpdating] = useState(false);
   const updateNews = () => {
     setUpdating(true);
-    axios.get(randomURL())
+    setTimeout(() => {
+      axios.get(randomURL())
       .then((res) => {
         const list = res.data.data.list;
-        setNews(list);
+        const filteredList = list.slice(list.length - 6, list.length)
+        setNews(filteredList);
       })
       .catch((err) => {
+        console.log('Please retry later');
         console.log(err);
       })
       .finally(() => {
         setUpdating(false);
       });
+    }, 1000)
   }
   const randomURL = useCallback(() => {
     let random = -1;
@@ -49,13 +53,21 @@ const Home = () => {
       refreshControl={renderRefresh()}
     >
       <NewsSwiper />
-      {news.map(singleNews => <News key={singleNews.title} info={singleNews}/>)}
+      <View style={styles.list}>
+        {news.map(singleNews => <News key={singleNews.title} info={singleNews}/>)}
+      </View>
     </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+  },
+  list: {
+    flex: 3,
+    alignContent: 'space-around',
+    // backgroundColor: 'red'
   }
 });
 

@@ -24,6 +24,10 @@ const User = () => {
           <Text style={styles.totalNum}>{sum}</Text>
           <Text style={styles.total}>Total Items: </Text>
         </View>
+        <View style={styles.totalwrap}>
+          <Text style={styles.totalCost}>{`$${(sum * 10).toFixed(2)}`}</Text>
+          <Text style={styles.total}>Cost: </Text>
+        </View>
         <View style={styles.buywrap}>
           <TouchableWithoutFeedback onPress={() => navigation.navigate('Pay')}>
             <View style={styles.buy}>
@@ -78,6 +82,10 @@ const styles = StyleSheet.create({
     borderRadius: 24,
     height: 48,
     backgroundColor: '#fa8c16'
+  },
+  totalCost: {
+    fontSize: 30,
+    color: '#fa8c16',
   },
   top: {
     flex: 1

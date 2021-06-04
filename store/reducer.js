@@ -1,8 +1,9 @@
-
 export const ACTION = {
   ADD: 'ADD',
   REMOVE: 'REMOVE',
-  CLEAR: 'CLEAR'
+  CLEAR: 'CLEAR',
+  PAY: 'PAY',
+  SETUSER: 'SETUSER',
 }
 function genData() {
   const order = new Map();
@@ -13,7 +14,11 @@ function genData() {
   return order;
 }
 const defaultState = {
-  order: genData()
+  order: genData(),
+  money: null,
+  orderCount: 10,
+  userId: null,
+  userName: 'Log In'
 }
 
 function reducer(state = defaultState, action) {
@@ -23,6 +28,7 @@ function reducer(state = defaultState, action) {
       const newOrder = new Map(newState.order);
       const prev = newOrder.has(action.payload) ? newOrder.get(action.payload) : 0;
       newOrder.set(action.payload, prev + 1);
+      newState.orderCount = newState.orderCount + 1;
       newState.order = newOrder;
       return newState;
     case ACTION.REMOVE:
@@ -30,11 +36,21 @@ function reducer(state = defaultState, action) {
       const prevR = newOrderR.get(action.payload);
       if (prevR === 1) newOrderR.delete(action.payload);
       else newOrderR.set(action.payload, prevR - 1);
+      newState.orderCount = newState.orderCount - 1;
       newState.order = newOrderR;
       return newState;
     case ACTION.CLEAR:
       const newOrderClear = new Map();
+      newState.orderCount = 0;
       newState.order = newOrderClear;
+      return newState;
+    case ACTION.PAY:
+      newState.money = newState.money - action.payload;
+      return newState;
+    case ACTION.SETUSER:
+      newState.userId = action.payload.userId;
+      newState.userName = action.payload.userName;
+      newState.money = action.payload.money;
       return newState;
     default:
       return newState;

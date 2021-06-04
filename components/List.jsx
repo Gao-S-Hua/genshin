@@ -1,9 +1,9 @@
 import { Text, View, StyleSheet, Button, ScrollView, SafeAreaView, Dimensions } from 'react-native';
 import React from 'react';
 import ListItem from './ListItem';
-import charList from '../data/characterList';
 
-const List = () => {
+const List = (props) => {
+  const { charList } = props;
   return(
     <View style={styles.wrap}>
       <ScrollView 
