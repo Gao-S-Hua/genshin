@@ -42,7 +42,7 @@ function BottomTab() {
       options={
         {
           ...tabIcon('ios-cart'),
-          tabBarBadge: orderCount
+          tabBarBadge: orderCount === 0 ? null : orderCount
         }}
     ></Tab.Screen>
     <Tab.Screen

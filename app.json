@@ -1,12 +1,12 @@
 {
   "expo": {
-    "name": "bil2",
-    "slug": "bil2",
+    "name": "Genshin2",
+    "slug": "genshin2",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
-      "image": "./assets/logo.png",
+      "image": "./assets/back.jpg",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -14,7 +14,7 @@
       "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": [
-      "**/*"
+      "assets/*"
     ],
     "ios": {
       "supportsTablet": true
@@ -27,6 +27,7 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": ""
   }
 }

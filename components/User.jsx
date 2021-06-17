@@ -4,11 +4,9 @@ import Func from './Func';
 import { useSelector, useDispatch } from 'react-redux';
 import  Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
-import Ani from './Ani';
 function empty() {
   Alert.alert('Under Development...');
 }
-
 
 const User = (props) => {
   const navigationPage = useNavigation();
